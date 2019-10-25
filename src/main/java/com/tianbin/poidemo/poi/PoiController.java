@@ -31,9 +31,13 @@ public class PoiController {
             map.put("age",i+"");
             rstList.add(map);
         }
+        //新建工作簿
         HSSFWorkbook workbook = new HSSFWorkbook();
+        //新建表表
         HSSFSheet sheet = workbook.createSheet("导出表");
+        //表名
         String fileName = "students" + ".xls";
+        //第一行为表头
         String [] headers = {"学号","姓名","身份类型","登录密码"};
         HSSFRow row = sheet.createRow(0);
         for (int i = 0;i<headers.length;i++){
@@ -41,6 +45,7 @@ public class PoiController {
             HSSFRichTextString text = new HSSFRichTextString(headers[i]);
             cell.setCellValue(text);
         }
+        //后面行为数据
         int rowNum = 1;
         for (Map map : rstList){
             HSSFRow row1 = sheet.createRow(rowNum);
